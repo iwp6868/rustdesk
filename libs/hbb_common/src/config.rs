@@ -50,117 +50,117 @@ type Size = (i32, i32, i32, i32);
 type KeyPair = (Vec<u8>, Vec<u8>);
 
 lazy_static::lazy_static! {
-    静态引用配置：RwLock<Config> = RwLock::new(配置::加载( ) ) ;(配置::加载( ) ) ;
-    静态引用 CONFIG2: RwLock<Config2> = RwLock::new(Config2::load());(Config2::load());
-    静态引用 LOCAL_CONFIG: RwLock<LocalConfig> = RwLock::new(LocalConfig::load());(LocalConfig::load());
-    静态引用 TRUSTED_DEVICES: RwLock<(Vec<TrustedDevice>, bool)> = Default::default();(Vec<TrustedDevice>, bool)> = Default::default();
-    静态引用在线：Mutex<HashMap<String, i64>> = Default::default();();
-    pub static ref PROD_RENDEZVOUS_SERVER: RwLock<String> = RwLock::new(match option_env!("RENDEZVOUS_SERVER") {(match option_env!("RENDEZVOUS_SERVER") {
-        Some(key) if !key.is_empty() => key,(key) if !key.is_empty() => key,
-        _=>“”，"",
-    }.to_owned());}.to_owned());
-    pub static ref EXE_RENDEZVOUS_SERVER: RwLock<String> = Default::default();();
-    pub static ref APP_NAME: RwLock<String> = RwLock::new("RustDesk".to_owned());("RustDesk".to_owned());
-    静态引用 KEY_PAIR: Mutex<Option<KeyPair>> = Default::default();( ) ;
-    static ref USER_DEFAULT_CONFIG: RwLock<(UserDefaultConfig, Instant)> = RwLock::new((UserDefaultConfig::load(), Instant::now()));
-    pub static ref NEW_STORED_PEER_CONFIG: Mutex<HashSet<String>> = Default::default();
-    pub static ref DEFAULT_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
-    pub static ref OVERWRITE_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
-    pub static ref DEFAULT_DISPLAY_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
-    pub static ref OVERWRITE_DISPLAY_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
-    pub static ref DEFAULT_LOCAL_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
-    pub static ref OVERWRITE_LOCAL_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
-    pub static ref HARD_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
-    pub static ref BUILTIN_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
+    静态引用配置：RwLock<Config> = RwLock::new(配置::加载( ) ) ;(配置::加载( ) ) ;(配置::加载(  )  ) ; (配置::加载(  )  ) ;
+    静态引用 CONFIG2: RwLock<Config2> = RwLock::new(Config2::load());(Config2::load());2::加载（））；（配置2::加载（））；
+    静态引用 LOCAL_CONFIG: RwLock<LocalConfig> = RwLock::new( LocalConfig::load ( ) ) ; ( LocalConfig::load ( ) ) ;
+    静态引用 TRUSTED_DEVICES: RwLock<( Vec<TrustedDevice>, bool ) > = Default::default ( ) ; ( Vec<TrustedDevice>, bool ) > = Default::default ( ) ;
+    静态引用在线：Mutex<HashMap<String, i64>> = Default::default();();( ) ; ( ) ;
+    pub static ref PROD_RENDEZVOUS_SERVER: RwLock<String> = RwLock::new（匹配 option_env！（“RENDEZVOUS_SERVER” ） { （匹配 option_env！（“RENDEZVOUS_SERVER” ） {(match option_env!("RENDEZVOUS_SERVER") {(match option_env!("RENDEZVOUS_SERVER") {
+        Some(key) if !key.is_empty() => key,(key) if !key.is_empty() => key,(key) if !key.is_empty() => key,(key) if !key.is_empty() => key,
+        _=>“”，“”，"",
+    }.to_owned());}.to_owned());}.to_owned());}.to_owned());
+    pub static ref EXE_RENDEZVOUS_SERVER: RwLock<String> = Default::default();();();();
+    pub static ref APP_NAME: RwLock<String> = RwLock::new ( "RustDesk" .to_owned ( ) ) ; ( “RustDesk” .to_owned ( ) ) ; ( “RustDesk” .to_owned ( ) ) ; ( “RustDesk” .to_owned ( ) ) ;
+    静态引用 KEY_PAIR: Mutex<Option<KeyPair>> = Default::default ( ) ; (  ) ;( ) ; (  ) ;
+    静态引用 USER_DEFAULT_CONFIG: RwLock< ( UserDefaultConfig, Instant ) > = RwLock::new ( ( UserDefaultConfig::load ( ) , Instant::now ( ) ) ) ;
+    pub static ref NEW_STORED_PEER_CONFIG: Mutex<HashSet<String>> = Default::default ( ) ;
+    pub static ref DEFAULT_SETTINGS: RwLock<HashMap<String, String>> = Default::default ( ) ;
+    pub static ref OVERWRITE_SETTINGS: RwLock<HashMap<String, String>> = Default::default ( ) ;
+    pub static ref DEFAULT_DISPLAY_SETTINGS: RwLock<HashMap<String, String>> = Default::default (  ) ;
+    pub static ref OVERWRITE_DISPLAY_SETTINGS: RwLock<HashMap<String, String>> = Default::default (  ) ;
+    pub static ref DEFAULT_LOCAL_SETTINGS: RwLock<HashMap<String, String>> = Default::default (  ) ;
+    pub static ref OVERWRITE_LOCAL_SETTINGS: RwLock<HashMap<String, String>> = Default::default (  ) ;
+    pub static ref HARD_SETTINGS: RwLock<HashMap<String, String>> = Default::default (  ) ;
+    pub static ref BUILTIN_SETTINGS: RwLock<HashMap<String, String>> = Default::default (  ）；
 }
 
-lazy_static::lazy_static! {
-    pub static ref APP_DIR: RwLock<String> = Default::default();
+默认静态：默认静态！
+    pub    static    ref    APP_DIR : RwLock<String> = Default::default (    ) ;
 }
 
-#[cfg(any(target_os = "android", target_os = "ios"))]
-lazy_static::lazy_static! {
-    pub static ref APP_HOME_DIR: RwLock<String> = Default::default();
+# [ cfg (任意( target_os = "android" , target_os = "ios" ) ) ]         
+默认静态：默认静态！
+    pub    static    ref    APP_HOME_DIR : RwLock<String> = Default::default (    ) ;
 }
 
-pub const LINK_DOCS_HOME: &str = "https://rustdesk.com/docs/en/";
-pub const LINK_DOCS_X11_REQUIRED: &str = "https://rustdesk.com/docs/en/manual/linux/#x11-required";
-pub const LINK_HEADLESS_LINUX_SUPPORT: &str =
-    "https://github.com/rustdesk/rustdesk/wiki/Headless-Linux-Support";
-lazy_static::lazy_static! {
-    pub static ref HELPER_URL: HashMap<&'static str, &'static str> = HashMap::from([
-        ("rustdesk docs home", LINK_DOCS_HOME),
-        ("rustdesk docs x11-required", LINK_DOCS_X11_REQUIRED),
-        ("rustdesk x11 headless", LINK_HEADLESS_LINUX_SUPPORT),
-        ]);
+酒吧常量 LINK_DOCS_HOME : &str ="https://rustdesk.com/docs/en/" ;
+pub  const   LINK_DOCS_X11_REQUIRED : &str = "https://rustdesk.com/docs/en/manual/linux/#x11-required" ;
+pub    常量    LINK_HEADLESS_LINUX_SUPPORT : &str =
+    “https://github.com/rustdesk/rustdesk/wiki/Headless-Linux-Support ”；
+默认静态: 默认静态！{
+    发布静态引用   HELPER_URL : HashMap<&'static str, &'static str> = HashMap::from(  [  pub    静态引用 HELPER_URL : HashMap<&'static str, &'static str> = HashMap::from
+        （“ rustdesk文档主页”，LINK_DOCS_HOME ），
+        （ “rustdesk 文档 x11-必需”，LINK_DOCS_X11_REQUIRED ），
+        （“rustdesk x11无头”，LINK_HEADLESS_LINUX_SUPPORT ），
+        ]      ) ;
 }
 
-const CHARS: &[char] = &[
-    '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-    'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-];
+常量 CHARS : &[字符] = &[
+    '2'、'3'、'4'、'5'、'6'、'7'、'8'、'9'、'a'、'b'、'c'、'd'、 'e '、' f '、' g '、' h '、' i '、' j '、' k'、
+    'm'、'n'、'p'、'q'、'r'、's'、't'、'u'、'v'、'w'、'x'、'y'、 'z ' ,
+] ;
 
-pub const RENDEZVOUS_SERVERS: &[&str] = &["dns.ipcp.top"];
-pub const PUBLIC_RS_PUB_KEY: &str = "B1A7L2yYtCPACHCpF5pCNQEWwbZyurp+SoZzQ7FDctM=";
+pub    常量    RENDEZVOUS_SERVERS : & [ &str ] = & "dns.ipcp.top" ; [ ]
+pub const PUBLIC_RS_PUB_KEY : &str = "B1A7L2yYtCPACHCpF5pCNQEWwbZyurp+SoZzQ7FDctM=" ;
 
-pub const RS_PUB_KEY: &str = match option_env!("RS_PUB_KEY") {
-    Some(key) if !key.is_empty() => key,
+pub    const     RS_PUB_KEY : &str =匹配option_env! （“RS_PUB_KEY”）{
+    一些（键）如果！键。is_empty (     ) => 键，
     _ => PUBLIC_RS_PUB_KEY,
-};
+} ;
 
-pub const RENDEZVOUS_PORT: i32 = 21116;
-pub const RELAY_PORT: i32 = 21117;
+酒吧const       RENDEZVOUS_PORT : i32 = 21116 ;
+酒吧      常量      RELAY_PORT：i32 = 21117；
 
-macro_rules! serde_field_string {
-    ($default_func:ident, $de_func:ident, $default_expr:expr) => {
-        fn $default_func() -> String {
-            $default_expr
+serde_field_string {宏规则！
+    ( $default_func:ident, $de_func:ident, $default_expr:expr ) => {
+        fn $default_func (    ) -> 字符串fn $default_func   {
+            $默认表达式
         }
 
-        fn $de_func<'de, D>(deserializer: D) -> Result<String, D::Error>
-        where
-            D: de::Deserializer<'de>,
+        fn $de_func<'de, D> (反序列化器: D ) -> Result<String, D::Error> fn $de_func<'de, D>解串器
+        在哪里哪里
+            D : de::解串器<'de>,
         {
-            let s: String =
-                de::Deserialize::deserialize(deserializer).unwrap_or(Self::$default_func());
-            if s.is_empty() {
-                return Ok(Self::$default_func());
+            让:字符串=让:字符串=
+                de::Deserialize::deserialize（反序列化器）。unwrap_or   ( Self::$default_func (   )   ) ;展开或
+            is_empty   ( ) {如果 s .是空的     
+                返回确定( Self::$default_func (  )  ) ;
             }
-            Ok(s)
+            好的​​​
         }
-    };
+    } ;
 }
 
-macro_rules! serde_field_bool {
-    ($struct_name: ident, $field_name: literal, $func: ident, $default: literal) => {
-        #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-        pub struct $struct_name {
-            #[serde(default = $default, rename = $field_name, deserialize_with = "deserialize_bool")]
-            pub v: bool,
+
+    ( $struct_name: ident, $field_name: 文字, $func: ident, $default: 文字) => {
+派生(调试、克隆、PartialEq、序列化、反序列化)  ]
+        pub结构 $struct_name {  pub结构$struct_name
+# [ serde (默认 = $default, 重命名 = $field_name, deserialize_with = "deserialize_bool" ) ]  
+
         }
-        impl Default for $struct_name {
-            fn default() -> Self {
-                Self { v: Self::$func() }
+        impl $struct_name的默认值{ impl $struct_name 的默认值
+            fn 默认( ) -> 自身{
+                Self {  v : Self::$func ( )  }
             }
         }
         impl $struct_name {
-            pub fn $func() -> bool {
-                UserDefaultConfig::read($field_name) == "Y"
+            pub  fn $func ( ) -> bool {
+                UserDefaultConfig::read ( $field_name ) == "Y"
             }
         }
         impl Deref for $struct_name {
-            type Target = bool;
+            类型目标=布尔；
 
-            fn deref(&self) -> &Self::Target {
-                &self.v
+             deref
+
             }
         }
-        impl DerefMut for $struct_name {
-            fn deref_mut(&mut self) -> &mut Self::Target {
-                &mut self.v
+        为$struct_name {实现DerefMut
+            fn  deref_mut ( & mut  self ) -> & mut Self::Target {
+                & mut 自我。v
             }
         }
-    };
+    } ;
 }
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]

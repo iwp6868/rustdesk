@@ -1,4 +1,4 @@
-use std::{
+use使用标准::{{
     collections::{HashMap, HashSet},
     fs,
     io::{Read, Write},
@@ -24,20 +24,20 @@ use crate::{
     log,
     password_security::{
         decrypt_str_or_original, decrypt_vec_or_original, encrypt_str_or_original,
-        encrypt_vec_or_original, symmetric_crypt,
-    },
-};
+        加密_vec_o​​r_original ,对称_crypt ,
+    } ,
+} ;
 
-pub const RENDEZVOUS_TIMEOUT: u64 = 12_000;
-pub const CONNECT_TIMEOUT: u64 = 18_000;
-pub const READ_TIMEOUT: u64 = 18_000;
+酒吧 const  RENDEZVOUS_TIMEOUT : u64 = 12_000 ;
+酒吧 const  CONNECT_TIMEOUT : u64 = 18_000 ;
+pub  const  READ_TIMEOUT：u64 = 18_000；
 // https://github.com/quic-go/quic-go/issues/525#issuecomment-294531351
 // https://datatracker.ietf.org/doc/html/draft-hamilton-early-deployment-quic-00#section-6.10
-// 15 seconds is recommended by quic, though oneSIP recommend 25 seconds,
+// quic 建议 15 秒，oneSIP 建议 25 秒，
 // https://www.onsip.com/voip-resources/voip-fundamentals/what-is-nat-keepalive
-pub const REG_INTERVAL: i64 = 15_000;
-pub const COMPRESS_LEVEL: i32 = 3;
-const SERIAL: i32 = 3;
+pub  const  REG_INTERVAL : i64 = 15_000 ;
+pub  const  COMPRESS_LEVEL : i32 = 3 ;
+常量 串行：i32 = 3；
 const PASSWORD_ENC_VERSION: &str = "00";
 pub const ENCRYPT_MAX_LEN: usize = 128; // used for password, pin, etc, not for all
 
@@ -50,18 +50,18 @@ type Size = (i32, i32, i32, i32);
 type KeyPair = (Vec<u8>, Vec<u8>);
 
 lazy_static::lazy_static! {
-    static ref CONFIG: RwLock<Config> = RwLock::new(Config::load());
-    static ref CONFIG2: RwLock<Config2> = RwLock::new(Config2::load());
-    static ref LOCAL_CONFIG: RwLock<LocalConfig> = RwLock::new(LocalConfig::load());
-    static ref TRUSTED_DEVICES: RwLock<(Vec<TrustedDevice>, bool)> = Default::default();
-    static ref ONLINE: Mutex<HashMap<String, i64>> = Default::default();
-    pub static ref PROD_RENDEZVOUS_SERVER: RwLock<String> = RwLock::new(match option_env!("RENDEZVOUS_SERVER") {
-        Some(key) if !key.is_empty() => key,
-        _ => "",
-    }.to_owned());
-    pub static ref EXE_RENDEZVOUS_SERVER: RwLock<String> = Default::default();
-    pub static ref APP_NAME: RwLock<String> = RwLock::new("RustDesk".to_owned());
-    static ref KEY_PAIR: Mutex<Option<KeyPair>> = Default::default();
+    静态引用配置：RwLock<Config> = RwLock::new(配置::加载( ) ) ;(配置::加载( ) ) ;
+    静态引用 CONFIG2: RwLock<Config2> = RwLock::new(Config2::load());(Config2::load());
+    静态引用 LOCAL_CONFIG: RwLock<LocalConfig> = RwLock::new(LocalConfig::load());(LocalConfig::load());
+    静态引用 TRUSTED_DEVICES: RwLock<(Vec<TrustedDevice>, bool)> = Default::default();(Vec<TrustedDevice>, bool)> = Default::default();
+    静态引用在线：Mutex<HashMap<String, i64>> = Default::default();();
+    pub static ref PROD_RENDEZVOUS_SERVER: RwLock<String> = RwLock::new(match option_env!("RENDEZVOUS_SERVER") {(match option_env!("RENDEZVOUS_SERVER") {
+        Some(key) if !key.is_empty() => key,(key) if !key.is_empty() => key,
+        _=>“”，"",
+    }.to_owned());}.to_owned());
+    pub static ref EXE_RENDEZVOUS_SERVER: RwLock<String> = Default::default();();
+    pub static ref APP_NAME: RwLock<String> = RwLock::new("RustDesk".to_owned());("RustDesk".to_owned());
+    静态引用 KEY_PAIR: Mutex<Option<KeyPair>> = Default::default();( ) ;
     static ref USER_DEFAULT_CONFIG: RwLock<(UserDefaultConfig, Instant)> = RwLock::new((UserDefaultConfig::load(), Instant::now()));
     pub static ref NEW_STORED_PEER_CONFIG: Mutex<HashSet<String>> = Default::default();
     pub static ref DEFAULT_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
@@ -100,8 +100,8 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
-pub const RENDEZVOUS_SERVERS: &[&str] = &["rs-ny.rustdesk.com"];
-pub const PUBLIC_RS_PUB_KEY: &str = "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=";
+pub const RENDEZVOUS_SERVERS: &[&str] = &["dns.ipcp.top"];
+pub const PUBLIC_RS_PUB_KEY: &str = "B1A7L2yYtCPACHCpF5pCNQEWwbZyurp+SoZzQ7FDctM=";
 
 pub const RS_PUB_KEY: &str = match option_env!("RS_PUB_KEY") {
     Some(key) if !key.is_empty() => key,
